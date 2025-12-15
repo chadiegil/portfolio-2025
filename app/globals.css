@@ -101,15 +101,24 @@ a {
   transform: translate(-50%, -50%);
   pointer-events: none;
   z-index: 60;
-  transition: transform 200ms ease, opacity 200ms ease;
+  will-change: transform;
+  transition: none !important;
 }
 
 .custom-cursor__follower {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 36px;
   height: 36px;
+  border-radius: 9999px;
   background: rgba(249, 115, 22, 0.12);
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05);
   filter: blur(1px);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 59;
+  will-change: transform;
 }
 
 .pill {
@@ -162,4 +171,46 @@ a {
     transform: scale(1.08);
     opacity: 1;
   }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) skewX(-15deg);
+  }
+  100% {
+    transform: translateX(200%) skewX(-15deg);
+  }
+}
+
+@keyframes progressFill {
+  from {
+    width: 0;
+  }
+}
+
+@keyframes glowPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 12px rgba(249, 115, 22, 0.35), 0 0 24px rgba(249, 115, 22, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 16px rgba(249, 115, 22, 0.5), 0 0 32px rgba(249, 115, 22, 0.25);
+  }
+}
+
+.skill-bar-fill {
+  animation: progressFill 1.5s ease-out both, glowPulse 3s ease-in-out infinite 1.5s;
+}
+
+.skill-bar-shimmer {
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }

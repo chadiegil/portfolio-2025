@@ -11,45 +11,60 @@ export default function CustomCursor() {
     const follower = followerRef.current;
     if (!cursor || !follower) return;
 
-    let raf: number;
+    let cursorX = 0;
+    let cursorY = 0;
+    let followerX = 0;
+    let followerY = 0;
+    let cursorScale = 1;
+    let followerScale = 1;
+    let raf: number | null = null;
+
+    const updateFollower = () => {
+      followerX += (cursorX - followerX) * 0.3;
+      followerY += (cursorY - followerY) * 0.3;
+      follower.style.transform = `translate(${followerX}px, ${followerY}px) translate(-50%, -50%) scale(${followerScale})`;
+
+      if (Math.abs(cursorX - followerX) > 0.1 || Math.abs(cursorY - followerY) > 0.1) {
+        raf = requestAnimationFrame(updateFollower);
+      } else {
+        raf = null;
+      }
+    };
 
     const move = (event: MouseEvent) => {
-      const { clientX, clientY } = event;
-
-      raf = requestAnimationFrame(() => {
-        cursor.style.transform = `translate(${clientX}px, ${clientY}px) translate(-50%, -50%) scale(1)`;
-        follower.style.transform = `translate(${clientX}px, ${clientY}px) translate(-50%, -50%) scale(1)`;
-      });
+      cursorX = event.clientX;
+      cursorY = event.clientY;
+      
+      // INSTANT update - single optimized transform, no delays, no chaining
+      cursor.style.transform = `translate(${cursorX}px, ${cursorY}px) translate(-50%, -50%) scale(${cursorScale})`;
+      
+      if (raf === null) {
+        raf = requestAnimationFrame(updateFollower);
+      }
     };
 
     const handleDown = () => {
-      cursor.style.transform = cursor.style.transform.replace(
-        /scale\([^)]+\)/,
-        "scale(0.85)",
-      );
-      follower.style.transform = follower.style.transform.replace(
-        /scale\([^)]+\)/,
-        "scale(1.1)",
-      );
+      cursorScale = 0.85;
+      followerScale = 1.1;
+      cursor.style.transform = `translate(${cursorX}px, ${cursorY}px) translate(-50%, -50%) scale(${cursorScale})`;
+      follower.style.transform = `translate(${followerX}px, ${followerY}px) translate(-50%, -50%) scale(${followerScale})`;
     };
 
     const handleUp = () => {
-      cursor.style.transform = cursor.style.transform.replace(
-        /scale\([^)]+\)/,
-        "scale(1)",
-      );
-      follower.style.transform = follower.style.transform.replace(
-        /scale\([^)]+\)/,
-        "scale(1)",
-      );
+      cursorScale = 1;
+      followerScale = 1;
+      cursor.style.transform = `translate(${cursorX}px, ${cursorY}px) translate(-50%, -50%) scale(${cursorScale})`;
+      follower.style.transform = `translate(${followerX}px, ${followerY}px) translate(-50%, -50%) scale(${followerScale})`;
     };
 
-    window.addEventListener("mousemove", move);
+    window.addEventListener("mousemove", move, { passive: true });
     window.addEventListener("mousedown", handleDown);
     window.addEventListener("mouseup", handleUp);
 
     return () => {
-      cancelAnimationFrame(raf);
+      if (raf !== null) {
+        cancelAnimationFrame(raf);
+      }
       window.removeEventListener("mousemove", move);
       window.removeEventListener("mousedown", handleDown);
       window.removeEventListener("mouseup", handleUp);

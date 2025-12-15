@@ -7,6 +7,14 @@ import Projects, { type Project } from "@/components/Projects";
 
 const projects: Project[] = [
   {
+    title: "Meet Amiya",
+    description:
+      "Modern portfolio website featuring smooth animations, custom cursor interactions, and a beautiful dark-themed design. Built with Next.js and TypeScript.",
+    image: "/placeholder-project.svg",
+    link: "https://meetamiya.com/",
+    tags: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Portfolio"],
+  },
+  {
     title: "Task/Project Management API",
     description:
       "Secure, role-based REST API for projects and tasks with Prisma + MongoDB, JWT auth, validation, logging, and full Docker setup.",
