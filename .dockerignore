@@ -1,0 +1,15 @@
+node_modules
+.next
+.git
+.turbo
+npm-debug.log
+yarn-error.log
+pnpm-lock.yaml
+*.swp
+*.local
+.env.local
+.env.development
+.env.production
+.env.test
+.DS_Store
+
