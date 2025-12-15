@@ -12,7 +12,7 @@ const projects: Project[] = [
       "Modern portfolio website featuring smooth animations, custom cursor interactions, and a beautiful dark-themed design. Built with Next.js and TypeScript.",
     image: "/placeholder-project.svg",
     link: "https://meetamiya.com/",
-    tags: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Portfolio"],
+    tags: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Portfolio","React Native"],
   },
   {
     title: "Task/Project Management API",
