@@ -76,11 +76,11 @@ export default function Hero({ name, title, tagline }: HeroProps) {
                 Currently open for select freelance and product collaborations.
               </div>
               <div className="grid gap-4 rounded-2xl bg-slate-900/60 p-6 backdrop-blur">
-                <div className="flex items-center justify-between text-sm text-slate-300">
-                <span>Recent stack</span>
-                <span className="pill px-3 py-1 text-xs text-orange-100">
-                  React 19 · Next.js 16 · Node.js · Postgres
-                </span>
+                <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between text-sm text-slate-300">
+                  <span className="font-medium">Recent stack</span>
+                  <span className="pill px-3 py-1 text-xs text-orange-100 text-center sm:text-left">
+                    React 19 · Next.js 16 · Node.js · Postgres
+                  </span>
                 </div>
                 <div className="grid gap-2 text-sm text-slate-300">
                   <span className="font-semibold text-white">Focus areas</span>
