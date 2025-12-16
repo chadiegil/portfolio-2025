@@ -73,7 +73,8 @@ const techHighlights: TechHighlight[] = [
   },
   {
     label: "Backend",
-    value: "Node.js, Express.js, Laravel, REST APIs, Swagger/OpenAPI, microservices",
+    value:
+      "Node.js, Express.js, Laravel, REST APIs, GraphQL, API Federation, Swagger/OpenAPI, microservices",
   },
   {
     label: "Databases",
