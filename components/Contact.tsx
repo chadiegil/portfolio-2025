@@ -1,5 +1,8 @@
+'use client';
+
 import Link from "next/link";
 import type React from "react";
+import { useState } from "react";
 
 type SocialLink = {
   label: string;
@@ -15,6 +18,39 @@ const fieldStyles =
   "w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-slate-100 placeholder:text-slate-500 shadow-inner shadow-black/30 focus:border-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-400/25";
 
 export default function Contact({ socialLinks }: ContactProps) {
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">(
+    "idle",
+  );
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const payload = {
+      name: formData.get("name") as string,
+      email: formData.get("email") as string,
+      message: formData.get("message") as string,
+    };
+
+    setStatus("loading");
+    setError(null);
+
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+
+    if (res.ok) {
+      setStatus("success");
+      event.currentTarget.reset();
+    } else {
+      const data = await res.json().catch(() => ({}));
+      setError(data?.error ?? "Something went wrong. Please try again.");
+      setStatus("error");
+    }
+  };
+
   return (
     <section id="contact" className="relative scroll-mt-24 py-20">
       <div className="mx-auto max-w-6xl px-6">
@@ -53,7 +89,7 @@ export default function Contact({ socialLinks }: ContactProps) {
               </div>
             </div>
 
-            <form className="relative space-y-4">
+            <form className="relative space-y-4" onSubmit={handleSubmit}>
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-slate-200">
@@ -95,15 +131,26 @@ export default function Contact({ socialLinks }: ContactProps) {
               </div>
 
               <p className="text-xs text-slate-500">
-                This form is client-side only for now. Connect your preferred
-                service (Formspree, Resend, etc.) to make it live.
+                This form sends directly to your inbox. We never store your data.
               </p>
+
+              {status === "success" && (
+                <p className="text-sm font-semibold text-emerald-300">
+                  Message sent! I&apos;ll reply soon.
+                </p>
+              )}
+              {status === "error" && (
+                <p className="text-sm font-semibold text-rose-300">
+                  {error ?? "Something went wrong. Please try again."}
+                </p>
+              )}
 
               <button
                 type="submit"
-                className="pill w-full bg-orange-500 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-orange-500/30 transition hover:scale-[1.01]"
+                disabled={status === "loading"}
+                className="pill w-full bg-orange-500 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-orange-500/30 transition hover:scale-[1.01] disabled:cursor-not-allowed disabled:opacity-70"
               >
-                Send message
+                {status === "loading" ? "Sending..." : "Send message"}
               </button>
             </form>
           </div>
