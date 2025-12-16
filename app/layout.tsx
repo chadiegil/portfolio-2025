@@ -19,6 +19,10 @@ export const metadata: Metadata = {
   description:
     "Portfolio for Chadie Gil S. Augis — a software engineer shipping full-stack experiences, robust APIs, and thoughtful UX.",
   metadataBase: new URL("https://portfolio.example.com"),
+  icons: {
+    icon: "/icon.svg",
+    apple: "/icon.svg",
+  },
   openGraph: {
     title: "Chadie Gil S. Augis | Software Engineer",
     description:
