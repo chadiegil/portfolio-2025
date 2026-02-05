@@ -15,6 +15,14 @@ const projects: Project[] = [
     tags: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Portfolio","React Native"],
   },
   {
+    title: "KAO Lead Finder",
+    description:
+      "SaaS lead prospecting platform with smart lead discovery via Google Maps, email verification, CRM pipeline management, AI-powered lead scoring, and bulk export capabilities.",
+    image: "/placeholder-project.svg",
+    link: "https://kaoleadfinder.com",
+    tags: ["SaaS", "Lead Generation", "AI", "CRM", "Automation"],
+  },
+  {
     title: "Task/Project Management API",
     description:
       "Secure, role-based REST API for projects and tasks with Prisma + MongoDB, JWT auth, validation, logging, and full Docker setup.",
