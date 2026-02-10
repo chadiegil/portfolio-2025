@@ -23,6 +23,14 @@ const projects: Project[] = [
     tags: ["SaaS", "Lead Generation", "AI", "CRM", "Automation"],
   },
   {
+    title: "Image Uploader",
+    description:
+      "A simple and intuitive image uploader application for uploading and managing images with a clean user interface.",
+    image: "/placeholder-project.svg",
+    link: "https://image-uploader-3oebyfgaa-chadiegils-projects.vercel.app/",
+    tags: ["React", "Next.js", "Image Upload", "Vercel"],
+  },
+  {
     title: "Task/Project Management API",
     description:
       "Secure, role-based REST API for projects and tasks with Prisma + MongoDB, JWT auth, validation, logging, and full Docker setup.",
