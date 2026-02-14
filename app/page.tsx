@@ -31,6 +31,14 @@ const projects: Project[] = [
     tags: ["React", "Next.js", "Image Upload", "Vercel"],
   },
   {
+    title: "Invoice Generator",
+    description:
+      "Browser-based invoice creation tool that generates professional PDF invoices without registration. All data stays in the browser for privacy.",
+    image: "/placeholder-project.svg",
+    link: "https://invoice-generator-three-cyan.vercel.app/",
+    tags: ["Next.js", "React", "TypeScript", "Tailwind CSS", "PDF"],
+  },
+  {
     title: "Task/Project Management API",
     description:
       "Secure, role-based REST API for projects and tasks with Prisma + MongoDB, JWT auth, validation, logging, and full Docker setup.",
