@@ -39,6 +39,14 @@ const projects: Project[] = [
     tags: ["Next.js", "React", "TypeScript", "Tailwind CSS", "PDF"],
   },
   {
+    title: "TrabahoHub",
+    description:
+      "Job application tracking platform to organize your job search. Track applications, manage statuses, and stay on top of your career opportunities.",
+    image: "/placeholder-project.svg",
+    link: "https://trabahohub.com",
+    tags: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Job Tracker"],
+  },
+  {
     title: "Task/Project Management API",
     description:
       "Secure, role-based REST API for projects and tasks with Prisma + MongoDB, JWT auth, validation, logging, and full Docker setup.",
