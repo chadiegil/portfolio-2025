@@ -47,6 +47,14 @@ const projects: Project[] = [
     tags: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Job Tracker"],
   },
   {
+    title: "WiikiBlog",
+    description:
+      "Personal blog platform for sharing articles, tutorials, and stories with a clean reading experience and modern publishing workflow.",
+    image: "/placeholder-project.svg",
+    link: "https://wiikiblog.online/",
+    tags: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Blog"],
+  },
+  {
     title: "Task/Project Management API",
     description:
       "Secure, role-based REST API for projects and tasks with Prisma + MongoDB, JWT auth, validation, logging, and full Docker setup.",
