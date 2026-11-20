@@ -59,7 +59,7 @@ const projects: Project[] = [
     description:
       "B2B marketplace connecting companies with spare skilled-workforce capacity to companies that need temporary workers, with company verification, in-platform messaging, and Stripe-powered bookings.",
     image: "/placeholder-project.svg",
-    link: "https://craftpool.com",
+    link: "https://craft-pool.com",
     tags: ["Next.js", "TypeScript", "Bun", "Prisma", "Stripe", "B2B Marketplace"],
   },
   {
