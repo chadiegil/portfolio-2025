@@ -55,6 +55,22 @@ const projects: Project[] = [
     tags: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Blog"],
   },
   {
+    title: "Craftpool",
+    description:
+      "B2B marketplace connecting companies with spare skilled-workforce capacity to companies that need temporary workers, with company verification, in-platform messaging, and Stripe-powered bookings.",
+    image: "/placeholder-project.svg",
+    link: "https://craftpool.com",
+    tags: ["Next.js", "TypeScript", "Bun", "Prisma", "Stripe", "B2B Marketplace"],
+  },
+  {
+    title: "PixelForge Studio",
+    description:
+      "Browser-based pixel art and 2D game-asset editor with layers, animation, tilesets, a tile-map editor, and a full export pipeline.",
+    image: "/placeholder-project.svg",
+    link: "https://chadpexil.online",
+    tags: ["React", "TypeScript", "Vite", "Bun", "Hono", "Pixel Art"],
+  },
+  {
     title: "Task/Project Management API",
     description:
       "Secure, role-based REST API for projects and tasks with Prisma + MongoDB, JWT auth, validation, logging, and full Docker setup.",
